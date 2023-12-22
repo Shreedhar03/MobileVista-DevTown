@@ -7,7 +7,7 @@ const Product = () => {
     return (
         <>
             <Navbar />
-            <section className='max-w-6xl lg:mx-auto my-6 flex flex-col gap-4 mx-4'>
+            <section className='max-w-6xl lg:mx-auto mt-6 mb-24 flex flex-col gap-4 mx-4'>
                 <img src="https://images.samsung.com/in/smartphones/galaxy-s23-ultra/buy/DM3-web-1.jpg" alt="phone" />
                 <h1 className='font-extrabold text-4xl mt-4'>Galaxy S23 Ultra</h1>
                 <Divider />
