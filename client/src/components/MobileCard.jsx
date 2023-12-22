@@ -1,6 +1,8 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const MobileCard = () => {
+    const navigate = useNavigate()
   return (
 
     <div key={''} className='w-[250px] h-[320px] border border-slate-300 shadow-inner shadow-slate-100 pb-2 rounded-lg flex flex-col justify-between snap-center'>
@@ -26,7 +28,7 @@ const MobileCard = () => {
                 <p className='absolute -top-4 bg-green-400 py-[2px] px-1 rounded-sm text-sm'> -26% </p>
             </div>
 
-            <button className='bg-gray-900 text-sm text-white py-2 mx-2 rounded-md'>Add To Cart</button>
+            <button onClick={()=>navigate('/product/1')} className='bg-gray-900 text-sm text-white py-2 mx-2 rounded-md'>Add To Cart</button>
         </div>
   )
 }
