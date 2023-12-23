@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import cart from '../assets/cart.svg'
 import logo from '../assets/samsung.svg'
+import menu from '../assets/menu.svg'
 import ExpandDiv from './ExpandDiv'
+
 const Navbar = () => {
     const [height, setHeight] = useState(window.scrollY)
     const [navBg, setNavBg] = useState(false)
+    const [expandNav, setExpandNav] = useState(false)
     useEffect(() => {
         console.log(height)
         window.addEventListener('scroll', () => {
@@ -18,10 +21,9 @@ const Navbar = () => {
     return (
         <nav className={`sticky top-0 ${navBg ? 'bg-gray-100' : 'bg-white'} z-20 `}>
 
-            <div className='max-w-6xl mx-auto flex relative px-6 justify-between'>
-                {/* <div className='flex items-center gap-1'> */}
-                    <img src={logo} alt="logo" className='w-24' onClick={() => navigate('/')} />
-                {/* </div> */}
+            <div className={`max-w-6xl mx-auto flex flex-col sm:flex-row relative px-6 justify-between pb-10 sm:pb-0 border-b-2 sm:border-b-0 border-gray-300 ${expandNav ? 'max-h-96' : 'max-h-24'}  overflow-hidden transition-all`}>
+                
+                <img src={logo} alt="logo" className='w-24' onClick={() => navigate('/')} />
 
                 <ul className='flex gap-14'>
                     <ExpandDiv products={[
@@ -42,21 +44,19 @@ const Navbar = () => {
                     ]} title='Flagship' />
                 </ul>
                 {/* search box */}
-                <div className='hidden sm:flex items-center gap-3'>
+                <div className='flex items-center gap-3'>
                     <input type="text" placeholder='search products' className='focus:outline-none border border-slate-300 rounded-xl px-4 py-2 text-sm' />
-                    <button>
+                    <button onClick={() => navigate('/checkout')}>
                         <img src={cart} alt="cart" className='w-6' />
                     </button>
                 </div>
+
+                <button className='absolute w-5 top-9 right-10' onClick={()=>setExpandNav(!expandNav)}>
+                    <img src={menu} alt="menu" />
+                </button>
             </div>
         </nav>
 
-        // <nav className=''>
-        //     <div className='flex items-center justify-center gap-1'>
-        //         <img src={logo} alt="logo" className='w-32' />
-        //         {/* <h2 className='text-xl font-semibold logo'>MobileVista</h2> */}
-        //     </div>
-        // </nav>
     )
 }
 

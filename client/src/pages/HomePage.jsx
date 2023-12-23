@@ -5,6 +5,7 @@ import MobileCard from '../components/MobileCard'
 import FeaturedCard from '../components/FeaturedCard'
 import Divider from '../components/Divider'
 import WhatsNew from '../components/WhatsNew'
+import Footer from '../components/Footer'
 
 const HomePage = () => {
   return (
@@ -30,7 +31,7 @@ const HomePage = () => {
           </div>
         </section>
       </section>
-
+      <Footer />
     </>
   )
 }
