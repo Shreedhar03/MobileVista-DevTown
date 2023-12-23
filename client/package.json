@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://shreedhar03.github.io/Samsung-DevTown/",
+  "homepage": "https://Shreedhar03.github.io/Samsung-DevTown/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
