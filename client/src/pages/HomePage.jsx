@@ -6,6 +6,7 @@ import FeaturedCard from '../components/FeaturedCard'
 import Divider from '../components/Divider'
 import WhatsNew from '../components/WhatsNew'
 import Footer from '../components/Footer'
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   return (
@@ -22,7 +23,7 @@ const HomePage = () => {
         <WhatsNew />
         <Divider/>
         <section className='flex flex-col'>
-          <button className='text-sm underline underline-offset-1 font-semibold mt-24 mb-4 self-end mx-4'>View all</button>
+          <Link to={'/products'} className='text-sm underline underline-offset-1 font-semibold mt-24 mb-4 self-end mx-4'>View all</Link>
           <div className='flex gap-8 flex-wrap mb-24'>
             <MobileCard />
             <MobileCard />
