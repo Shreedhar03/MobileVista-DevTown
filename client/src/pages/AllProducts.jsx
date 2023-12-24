@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from '../components/Navbar'
 import MobileCard from '../components/MobileCard'
 import down from '../assets/down.svg'
 import up from '../assets/up.svg'
+import { AppContext } from '../App'
 
 const AllProducts = () => {
     const [showFilters, setShowFilters] = useState(0)
+    const { allProducts } = useContext(AppContext)
     return (
         <>
             <Navbar />
@@ -46,30 +48,11 @@ const AllProducts = () => {
                 </div>
                 <h1 className='text-lg mt-4'>Discover All Smartphones</h1>
                 <div className='flex flex-wrap items-center justify-center sm:justify-start gap-6 mt-6'>
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
-                    <MobileCard />
+                    {
+                        allProducts.map((p,key) => {
+                            return <MobileCard key={key} brand={p.brand} productName={p.productName} images={p.images} discountPercentage={p.discountPercentage} price={p.price} rating={p.rating}/>
+                        })
+                    }
                 </div>
             </section>
         </>
