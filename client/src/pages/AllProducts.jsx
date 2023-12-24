@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import MobileCard from '../components/MobileCard'
 import down from '../assets/down.svg'
@@ -8,6 +8,10 @@ import { AppContext } from '../App'
 const AllProducts = () => {
     const [showFilters, setShowFilters] = useState(0)
     const { allProducts } = useContext(AppContext)
+
+    useEffect(()=>{
+        window.scrollTo(0,0)
+    },[])
     return (
         <>
             <Navbar />
@@ -50,7 +54,7 @@ const AllProducts = () => {
                 <div className='flex flex-wrap items-center justify-center sm:justify-start gap-6 mt-6'>
                     {
                         allProducts.map((p,key) => {
-                            return <MobileCard key={key} brand={p.brand} productName={p.productName} images={p.images} discountPercentage={p.discountPercentage} price={p.price} rating={p.rating}/>
+                            return <MobileCard id={p._id} key={key} brand={p.brand} productName={p.productName} images={p.images} discountPercentage={p.discountPercentage} price={p.price} rating={p.rating}/>
                         })
                     }
                 </div>

@@ -1,21 +1,36 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import ProductDetail from '../components/ProductDetail'
 import Divider from '../components/Divider'
+import { useParams } from 'react-router-dom'
+import axios from 'axios'
 
 const Product = () => {
+    const id = useParams('id').id
+    const [data, setData] = useState({})
+    const fetchData = async () => {
+        try {
+            let { data } = await axios.get(`http://localhost:5000/api/product/${id}`)
+            setData(data.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    useEffect(() => {
+        fetchData()
+    }, [])
     return (
         <>
             <Navbar />
             <section className='max-w-6xl lg:mx-auto mt-6 mb-24 flex flex-col gap-4 mx-4'>
-                <img src="https://images.samsung.com/in/smartphones/galaxy-s23-ultra/buy/DM3-web-1.jpg" alt="phone" />
-                <h1 className='font-extrabold text-4xl mt-4'>Galaxy S23 Ultra</h1>
+                <img src={data?.images ? data?.images[0] : ''} className='w-full h-72 object-contain' alt="phone" />
+                <h1 className='font-extrabold text-4xl mt-4'>{data.productName}</h1>
                 <Divider />
                 <div className='p-2 rounded-lg flex flex-wrap gap-6'>
-                    <ProductDetail title='Storage' data='256GB' />
-                    <ProductDetail title='RAM' data='16GB' />
-                    <ProductDetail title='Camera' data='108MP | 16MP' />
-                    <ProductDetail title='Processor' data='MediaTek 770T' />
+                    <ProductDetail title='Storage' data={data.storage} />
+                    <ProductDetail title='RAM' data={data.RAM} />
+                    <ProductDetail title='Camera' data={data.camera} />
+                    <ProductDetail title='Processor' data={data.processor} />
                 </div>
                 <Divider />
                 <div>

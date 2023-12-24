@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
+    _id:String,
     productName:String,
     brand:String,
     rating:String,
@@ -9,6 +10,7 @@ const productSchema = new mongoose.Schema({
     images:Array,
     processor:String,
     RAM:String,
+    camera:String,
     storage:String
 },{timestamps: true})
 

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 const MobileCard = (props) => {
     const navigate = useNavigate()
-    const {brand,productName,images,discountPercentage,price,rating,key} = props
+    const {id,brand,productName,images,discountPercentage,price,rating,key} = props
   return (
 
     <div key={key} className='w-[250px] h-[320px] border border-slate-300 shadow-inner shadow-slate-100 pb-2 rounded-lg flex flex-col justify-between snap-center'>
@@ -29,7 +29,7 @@ const MobileCard = (props) => {
                 <p className='absolute -top-4 bg-green-400 py-[2px] px-1 rounded-sm text-sm'> -{discountPercentage}% </p>
             </div>
 
-            <button onClick={()=>navigate('/product/1')} className='bg-gray-900 text-sm text-white py-2 mx-2 rounded-md'>Add To Cart</button>
+            <button onClick={()=>navigate(`/product/${productName}`)} className='bg-gray-900 text-sm text-white py-2 mx-2 rounded-md'>See more</button>
         </div>
   )
 }

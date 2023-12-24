@@ -22,7 +22,7 @@ function App() {
   }, [])
   return (
     <>
-      <AppContext.Provider value={{ allProducts }}>
+      <AppContext.Provider value={{ allProducts,getAllProducts }}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<HomePage />} />
