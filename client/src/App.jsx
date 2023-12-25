@@ -11,6 +11,14 @@ export const AppContext = createContext();
 function App() {
 
   const [allProducts, setAllProducts] = useState([])
+  const [cart, setCart] = useState([])
+  const [order, setOrder] = useState({
+    fName: "",
+    lName: "",
+    address: "",
+    cart: {},
+    orderTotal: 0,
+  })
   const getAllProducts = async () => {
     let { data } = await axios.get(`http://localhost:5000/api/products`)
     setAllProducts(data.data)
@@ -22,7 +30,7 @@ function App() {
   }, [])
   return (
     <>
-      <AppContext.Provider value={{ allProducts,getAllProducts }}>
+      <AppContext.Provider value={{ allProducts, getAllProducts, cart, setCart, order, setOrder }}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<HomePage />} />

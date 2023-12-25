@@ -2,10 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import ProductDetail from '../components/ProductDetail'
 import Divider from '../components/Divider'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+import { AppContext } from '../App'
 
 const Product = () => {
+    const {cart,setCart}=useContext(AppContext)
+    const navigate = useNavigate()
     const id = useParams('id').id
     const [data, setData] = useState({})
     const fetchData = async () => {
@@ -19,6 +22,9 @@ const Product = () => {
     useEffect(() => {
         fetchData()
     }, [])
+    const handleAddToCart = ()=>{
+        cart.find(c=>c._id===data._id) || setCart([...cart,data])
+    }
     return (
         <>
             <Navbar />
@@ -34,8 +40,13 @@ const Product = () => {
                 </div>
                 <Divider />
                 <div>
-                    <button className='border inline border-gray-900 text-lg self-start text-gray-900 py-2 px-4 mx-2 rounded-md'>Add to Cart</button>
-                    <button className='bg-gray-900 inline text-lg self-start text-white py-2 px-4 mx-2 rounded-md'>Buy Now</button>
+                    <button className='border inline border-gray-900 text-lg self-start text-gray-900 py-2 px-4 mx-2 rounded-md' onClick={handleAddToCart}>{
+                        cart.find(c=>c._id===data._id) ? 'Added' : 'Add to Cart'
+                    }</button>
+                    <button className='bg-gray-900 inline text-lg self-start text-white py-2 px-4 mx-2 rounded-md' onClick={()=>{
+                        handleAddToCart();
+                        navigate('/checkout')
+                    }}>Buy Now</button>
                 </div>
             </section>
         </>
