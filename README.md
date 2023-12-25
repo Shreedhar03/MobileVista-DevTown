@@ -1,3 +1,5 @@
+https://github.com/Shreedhar03/Samsung-DevTown/assets/114936376/d382a20a-6b2c-4fda-a557-0b4608d95722
+
 # Samsung-Alpha
 
 This README provides instructions on how to set up and run the project on your local environment
