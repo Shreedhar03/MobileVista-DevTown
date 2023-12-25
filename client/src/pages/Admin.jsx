@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Divider from '../components/Divider'
 
 const Admin = () => {
     const [allOrders, setAllOrders] = useState([])
@@ -29,19 +30,21 @@ const Admin = () => {
                         allOrders?.map((order, key) => {
                             return <div key={key} className='border-2 rounded-xl p-4 border-slate-200'>
                                 <p className='text-lg font-extrabold'>{order?.fName} {order?.lName}</p>
-                                <p className='text-gray-600'>{order?.address} | {order?.phone} | {order?.email}</p>
+                                <p className='text-gray-600 mb-3'>{order?.address} | {order?.phone} | {order?.email}</p>
 
-                                <div className='flex gap-2 mt-3'>
+                                <Divider />
+
+                                <div className='flex overflow-scroll snap-x mt-3 bg-gray-100 py-2 rounded-lg'>
                                     {
                                         order.cart?.map((cart, key) => {
-                                            return <>
+                                            return <div className='shrink-0 snap-start flex gap-2 w-full'>
                                                 <img className='w-24 h-24 object-cover rounded-xl' src={cart?.images?.[0]} alt="phone" />
                                                 <div className='flex flex-col'>
                                                     <Link to={'/'} className='text-xl underline font-extrabold text-gray-900'>{cart?.productName}</Link>
                                                     <h1 className='font-extrabold text-gray-700'>{cart?.RAM} | {cart?.storage}</h1>
-                                                    <h1 className='font-extrabold text-gray-700'>&#8377;{cart?.price - cart?.price*cart?.discountPercentage/100}</h1>
+                                                    <h1 className='font-extrabold text-gray-700'>&#8377;{cart?.price - cart?.price * cart?.discountPercentage / 100}</h1>
                                                 </div>
-                                            </>
+                                            </div>
                                         })
                                     }
                                 </div>
