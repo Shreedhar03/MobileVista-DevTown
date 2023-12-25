@@ -69,5 +69,13 @@ const placeOrder = async (req, res) => {
         console.log(error)
     }
 }
+const getAllOrders = async (req, res) => {
+    try {
+        let orders = await orderModel.find()
+        res.status(200).json({ success: true,orders })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-module.exports = { addProducts, getAllProducts, getSingleProducts, placeOrder }
+module.exports = { addProducts, getAllProducts, getSingleProducts, placeOrder,getAllOrders }

@@ -37,7 +37,7 @@ const Navbar = () => {
     return (
         <nav className={`sticky top-0 ${navBg ? 'bg-gray-100' : 'bg-white'} z-20 `}>
 
-            <div className={`max-w-6xl mx-auto flex flex-col sm:flex-row relative px-6 justify-between pb-10 sm:pb-0 border-b-2 sm:border-b-0 border-gray-300 ${expandNav ? 'max-h-96' : 'max-h-24'}  overflow-hidden sm:overflow-visible transition-all`}>
+            <div className={`max-w-6xl mx-auto flex flex-col lg:flex-row relative px-6 justify-between pb-10 lg:pb-0 border-b-2 lg:border-b-0 border-gray-300 ${expandNav ? 'max-h-96' : 'max-h-24'}  overflow-hidden lg:overflow-visible transition-all`}>
 
                 <img src={logo} alt="logo" className='w-24' onClick={() => navigate('/')} />
 
@@ -61,7 +61,7 @@ const Navbar = () => {
                     ]} title='Flagship' />
                 </ul>
                 {/* search box */}
-                <div className='flex items-center mt-6 sm:mt-0 gap-3 relative'>
+                <div className='flex items-center mt-6 lg:mt-0 gap-3 relative'>
                     <input type="text" onBlur={() => setTimeout(() => {
                         setSearching(false)
                     }, 1000)} onChange={handleSearchChange} placeholder='search products' className='focus:outline-none border border-slate-300 rounded-xl px-4 py-2 text-sm' />
@@ -87,7 +87,7 @@ const Navbar = () => {
                     </section>
                 </div>
 
-                <button className='absolute w-5 block sm:hidden top-9 right-10' onClick={() => setExpandNav(!expandNav)}>
+                <button className='absolute w-5 block lg:hidden top-9 right-10' onClick={() => setExpandNav(!expandNav)}>
                     <img src={menu} alt="menu" />
                 </button>
             </div>
