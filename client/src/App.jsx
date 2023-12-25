@@ -23,7 +23,7 @@ function App() {
   })
   const getAllProducts = async () => {
     try {
-      let { data } = await axios.get(`https://samsung-alpha.onrender.com/api/products`)
+      let { data } = await axios.get(`${import.meta.env.VITE_FETCH_URL}api/products`)
       setAllProducts(data.data)
       console.log(data.data)
     } catch (error) {
@@ -33,6 +33,7 @@ function App() {
 
   useEffect(() => {
     getAllProducts()
+    console.log(import.meta.env.VITE_FETCH_URL)
   }, [])
   return (
     <>
