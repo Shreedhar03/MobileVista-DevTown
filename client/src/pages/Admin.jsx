@@ -7,7 +7,7 @@ const Admin = () => {
     const [allOrders, setAllOrders] = useState([])
     const getAllOrders = async () => {
         try {
-            let { data } = await axios.get(`http://localhost:5000/api/orders`)
+            let { data } = await axios.get(`https://samsung-alpha.onrender.com/api/orders`)
             setAllOrders(data.orders)
             console.log(data.orders)
         } catch (error) {

@@ -23,7 +23,7 @@ function App() {
   })
   const getAllProducts = async () => {
     try {
-      let { data } = await axios.get(`http://localhost:5000/api/products`)
+      let { data } = await axios.get(`https://samsung-alpha.onrender.com/api/products`)
       setAllProducts(data.data)
       console.log(data.data)
     } catch (error) {

@@ -13,7 +13,7 @@ const Product = () => {
     const [data, setData] = useState({})
     const fetchData = async () => {
         try {
-            let { data } = await axios.get(`http://localhost:5000/api/product/${id}`)
+            let { data } = await axios.get(`https://samsung-alpha.onrender.com/api/product/${id}`)
             setData(data.data)
         } catch (err) {
             console.log(err)

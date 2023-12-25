@@ -22,7 +22,7 @@ const CheckoutForm = ({ setShowForm,setOrdered }) => {
 
     const placeOrder = async () => {
         try {
-            let { data } = await axios.post(`http://localhost:5000/api/place-order`, {
+            let { data } = await axios.post(`https://samsung-alpha.onrender.com/api/place-order`, {
                 orderData: { ...formData, cart },
             });
             console.log(data)
